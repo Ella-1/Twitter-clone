@@ -22,6 +22,7 @@ export default function Home({providers, trendingResults,followResults}) {
         <Sidebar />
         {/* feeds */}
         <Feed />
+        {session.user.name}
         {/* widgets */}
       {/* modal */}
       </main>
@@ -31,23 +32,23 @@ export default function Home({providers, trendingResults,followResults}) {
 
 
 
-// export async function getServerSideProps(context) {
-//   const trendingResults = await axios("https://www.jsonkeeper.com/b/NKEV").then(
-//     (res) => res.data
-//   );
-//   const followResults = await axios("https://www.jsonkeeper.com/b/WWMJ").then(
-//     (res) => res.data
-//   );
-//   const providers = await getProviders();
-//   const session = await getSession(context);
-//   console.log(providers)
+export async function getServerSideProps(context) {
+  const trendingResults = await axios("https://www.jsonkeeper.com/b/NKEV").then(
+    (res) => res.data
+  );
+  const followResults = await axios("https://www.jsonkeeper.com/b/WWMJ").then(
+    (res) => res.data
+  );
+  const providers = await getProviders();
+  const session = await getSession(context);
+  // console.log(providers)
 
-//   return {
-//     props: {
-//       trendingResults,
-//       followResults,
-//       providers,
-//       session,
-//     },
-//   };
-// }
+  return {
+    props: {
+      trendingResults,
+      followResults,
+      providers,
+      session,
+    },
+  };
+}

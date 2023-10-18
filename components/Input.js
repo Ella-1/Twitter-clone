@@ -18,6 +18,8 @@ import {
   updateDoc,
 } from "@firebase/firestore";
 import { getDownloadURL, ref, uploadString } from "@firebase/storage";
+import { useSession } from "next-auth/react";
+
 
 const Input = () => {
   const [input, SetInput] = useState();
@@ -25,6 +27,7 @@ const Input = () => {
   const filePicker = useRef(null);
   const [showEmojis, setShowEmojis] = useState(false);
   const [loading, setLoading] = useState(false);
+  const {data: session} = useSession()
 
   const addImageToPost = (e) => {
     const reader = new FileReader();
@@ -43,10 +46,10 @@ const Input = () => {
     setLoading(true);
     const docRef = await addDoc(
       collection(db, "posts"), {
-        // id: session.user.uid,
-        // username: session.user.name,
-        // userImg: session.user.image,
-        // tag: session.user.tag,
+        id: session.user.uid,
+        username: session.user.name,
+        userImg: session.user.image,
+        tag: session.user.tag,
         text: input,
         timestamp: serverTimestamp(),
       });
@@ -81,7 +84,7 @@ const Input = () => {
   return (
     <div className={`border-b border-gray-700 p-3 flex space-x-3 ${loading && "opacity-60"}`}>
       <img
-        src="https://th.bing.com/th/id/OIP.jKeFRiuhTt4oaf0s4o3RaQHaFj?w=251&h=188&c=7&r=0&o=5&dpr=1.3&pid=1.7"
+        src={session.user.image}
         alt=""
         className="h-11 w-11 rounded-full cursor-pointer overflow-y-scroll"
       />
