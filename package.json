@@ -1,0 +1,39 @@
+{
+  "name": "commerce-admin",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@auth/mongodb-adapter": "^1.0.0",
+    "@emoji-mart/data": "^1.1.2",
+    "@emoji-mart/react": "^1.1.1",
+    "@heroicons/react": "^1.0.6",
+    "autoprefixer": "^10.4.11",
+    "axios": "^1.5.1",
+    "dotenv": "^16.3.1",
+    "emoji-mart": "^5.5.2",
+    "firebase": "^10.4.0",
+    "heroicons": "^2.0.18",
+    "micro": "^9.4.1",
+    "mongodb": "^5.7.0",
+    "mongoose": "^6.6.1",
+    "next": "12.3.0",
+    "next-auth": "^4.23.2",
+    "postcss": "^8.4.16",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "stripe": "^10.10.0",
+    "tailwind-scrollbar-hide": "^1.1.7",
+    "tailwindcss": "^3.1.8",
+    "use-local-storage-state": "^18.1.1"
+  },
+  "devDependencies": {
+    "eslint": "8.22",
+    "eslint-config-next": "12.3.0"
+  }
+}
